@@ -15,16 +15,16 @@ document.onkeyup = function() {
 
     var userGuess = event.key;
 
-
     if (userGuess === computerPick) {
+        alert("Correct! The letter was " + userGuess)
         wins++;
         document.getElementById("wins").textContent = "Wins: " + wins;
-        computerPick = computerChoices[Math.floor(Math.random() * computerChoices.length)]
         guessesLeft = 10;
         document.getElementById("guessesLeft").textContent = "Guesses Left: " + guessesLeft;
         guessedLetters = "";
         document.getElementById("guessedLetters").textContent = "Guessed Letters: " + guessedLetters; 
-        alert("Correct! The letter was " + userGuess);
+        computerPick = computerChoices[Math.floor(Math.random() * computerChoices.length)]
+        ;
     }
     else if (!guessedLetters.includes(userGuess)){
         guessesLeft--;
@@ -33,14 +33,14 @@ document.onkeyup = function() {
         document.getElementById("guessedLetters").textContent = "Guessed Letters: " + guessedLetters; 
     }
     if (guessesLeft < 1) {
+        alert("Sorry, the letter was " + computerPick);
         losses++;
         document.getElementById("losses").textContent = "Losses: " + losses;
-        computerPick = computerChoices[Math.floor(Math.random() * computerChoices.length)]
         guessesLeft = 10;
         document.getElementById("guessesLeft").textContent = "Guesses Left: " + guessesLeft;
         guessedLetters = "";
         document.getElementById("guessedLetters").textContent = "Guessed Letters: " + guessedLetters; 
-        alert("Sorry, the letter was " + computerPick);
+        computerPick = computerChoices[Math.floor(Math.random() * computerChoices.length)]
     }
 
 }
